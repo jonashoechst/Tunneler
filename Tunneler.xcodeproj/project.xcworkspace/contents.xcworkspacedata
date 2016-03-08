@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Tunnler.xcodeproj">
+      location = "self:/Users/hoechst/Xcode Projects/Tunnler/Tunneler.xcodeproj">
    </FileRef>
 </Workspace>

@@ -11,15 +11,17 @@
 		472EBCD91C8E0B9000E44552 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EBCD81C8E0B9000E44552 /* ViewController.swift */; };
 		472EBCDB1C8E0B9000E44552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472EBCDA1C8E0B9000E44552 /* Assets.xcassets */; };
 		472EBCDE1C8E0B9000E44552 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 472EBCDC1C8E0B9000E44552 /* Main.storyboard */; };
+		472EBCE61C8E15FC00E44552 /* SSHConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EBCE51C8E15FC00E44552 /* SSHConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		472EBCD31C8E0B9000E44552 /* Tunnler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tunnler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		472EBCD31C8E0B9000E44552 /* Tunneler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tunneler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		472EBCD61C8E0B9000E44552 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		472EBCD81C8E0B9000E44552 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		472EBCDA1C8E0B9000E44552 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		472EBCDD1C8E0B9000E44552 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		472EBCDF1C8E0B9000E44552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		472EBCE51C8E15FC00E44552 /* SSHConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +38,7 @@
 		472EBCCA1C8E0B8F00E44552 = {
 			isa = PBXGroup;
 			children = (
-				472EBCD51C8E0B9000E44552 /* Tunnler */,
+				472EBCD51C8E0B9000E44552 /* Tunneler */,
 				472EBCD41C8E0B9000E44552 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,29 +46,30 @@
 		472EBCD41C8E0B9000E44552 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				472EBCD31C8E0B9000E44552 /* Tunnler.app */,
+				472EBCD31C8E0B9000E44552 /* Tunneler.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		472EBCD51C8E0B9000E44552 /* Tunnler */ = {
+		472EBCD51C8E0B9000E44552 /* Tunneler */ = {
 			isa = PBXGroup;
 			children = (
 				472EBCD61C8E0B9000E44552 /* AppDelegate.swift */,
+				472EBCE51C8E15FC00E44552 /* SSHConnection.swift */,
 				472EBCD81C8E0B9000E44552 /* ViewController.swift */,
 				472EBCDA1C8E0B9000E44552 /* Assets.xcassets */,
 				472EBCDC1C8E0B9000E44552 /* Main.storyboard */,
 				472EBCDF1C8E0B9000E44552 /* Info.plist */,
 			);
-			path = Tunnler;
+			path = Tunneler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		472EBCD21C8E0B8F00E44552 /* Tunnler */ = {
+		472EBCD21C8E0B8F00E44552 /* Tunneler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 472EBCE21C8E0B9000E44552 /* Build configuration list for PBXNativeTarget "Tunnler" */;
+			buildConfigurationList = 472EBCE21C8E0B9000E44552 /* Build configuration list for PBXNativeTarget "Tunneler" */;
 			buildPhases = (
 				472EBCCF1C8E0B8F00E44552 /* Sources */,
 				472EBCD01C8E0B8F00E44552 /* Frameworks */,
@@ -76,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = Tunnler;
+			name = Tunneler;
 			productName = Tunnler;
-			productReference = 472EBCD31C8E0B9000E44552 /* Tunnler.app */;
+			productReference = 472EBCD31C8E0B9000E44552 /* Tunneler.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 472EBCCE1C8E0B8F00E44552 /* Build configuration list for PBXProject "Tunnler" */;
+			buildConfigurationList = 472EBCCE1C8E0B8F00E44552 /* Build configuration list for PBXProject "Tunneler" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -109,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				472EBCD21C8E0B8F00E44552 /* Tunnler */,
+				472EBCD21C8E0B8F00E44552 /* Tunneler */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				472EBCD91C8E0B9000E44552 /* ViewController.swift in Sources */,
+				472EBCE61C8E15FC00E44552 /* SSHConnection.swift in Sources */,
 				472EBCD71C8E0B9000E44552 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,10 +239,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Tunnler/Info.plist;
+				INFOPLIST_FILE = Tunneler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.jonashoechst.Tunnler;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = de.jonashoechst.Tunneler;
+				PRODUCT_NAME = Tunneler;
 			};
 			name = Debug;
 		};
@@ -247,17 +251,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Tunnler/Info.plist;
+				INFOPLIST_FILE = Tunneler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.jonashoechst.Tunnler;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = de.jonashoechst.Tunneler;
+				PRODUCT_NAME = Tunneler;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		472EBCCE1C8E0B8F00E44552 /* Build configuration list for PBXProject "Tunnler" */ = {
+		472EBCCE1C8E0B8F00E44552 /* Build configuration list for PBXProject "Tunneler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				472EBCE01C8E0B9000E44552 /* Debug */,
@@ -266,13 +270,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		472EBCE21C8E0B9000E44552 /* Build configuration list for PBXNativeTarget "Tunnler" */ = {
+		472EBCE21C8E0B9000E44552 /* Build configuration list for PBXNativeTarget "Tunneler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				472EBCE31C8E0B9000E44552 /* Debug */,
 				472EBCE41C8E0B9000E44552 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
