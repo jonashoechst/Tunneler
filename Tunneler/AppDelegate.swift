@@ -9,53 +9,58 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, SSHConnectionDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, SSHConnectionManagerDelegate {
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength)
-    var connections: [SSHConnection] = []
-
+    var manager: SSHConnectionManager?
+    
+    // MARK: NSApplicationDelegate Methods
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        self.manager = SSHConnectionManager(theDelegate: self)
+        
         if let button = statusItem.button {
             button.image = NSImage(named: "StatusBarButtonImage")
         }
         
-        connections.append(SSHConnection(theHost: "jonashoechst.de", theSocksPort: 1080, theDelegate: self))
-        connections.append(SSHConnection(theHost: "rechenschieber", theSocksPort: 1080, theDelegate: self))
-        
         let menu = NSMenu()
-        for c in connections {
-            let index = connections.indexOf({$0 === c})
-            let item = NSMenuItem(title: c.host, action: Selector("itemClicked:"), keyEquivalent: String(index!+1))
-            item.state = NSOffState
+        for (index, c) in manager!.connections.enumerate() {
+            let item = NSMenuItem(title: "\(c.host) (\(c.dynamicForward!))", action: Selector("itemClicked:"), keyEquivalent: String(index+1))
+            item.tag = index
             menu.addItem(item)
         }
+        
+        menu.addItem(NSMenuItem.separatorItem())
+        menu.addItem(NSMenuItem(title: "Refresh Menu", action: Selector("refresh:"), keyEquivalent: "r"))
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(NSMenuItem(title: "Quit", action: Selector("terminate:"), keyEquivalent: "q"))
         
         statusItem.menu = menu
     }
     
+    func applicationWillTerminate(notification: NSNotification) {
+        manager!.terminate()
+    }
+    
+    // MARK: NSMenuItem Methods
     func itemClicked(sender: NSMenuItem) {
-        let index = statusItem.menu?.indexOfItem(sender)
-        let connection = connections[index!]
+        let connection = manager!.connections[sender.tag]
         
         if connection.status == SSHConnectionStatus.connected {
             connection.disconnect()
         } else {
-            connection.connect()
+            do { try connection.connect() }
+            catch { print("The connection could not be initiated... Already connected?") }
         }
     }
-    
-    func sessionConnected(connection: SSHConnection) {
-        let index = connections.indexOf({$0 === connection})
-        statusItem.menu?.itemAtIndex(index!)?.state = NSOnState
-    }
-    
-    func sessionDisconnected(connection: SSHConnection, message: String?) {
-        let index = connections.indexOf({$0 === connection})
-        statusItem.menu?.itemAtIndex(index!)?.state = NSOffState
-    }
-    
 
+    
+    // MARK: SSHConnectionManagerDelegate Methods
+    func sessionConnected(index: Int) {
+        statusItem.menu?.itemAtIndex(index)?.state = NSOnState
+    }
+    
+    func sessionDisconnected(index: Int, message: String?){
+        statusItem.menu?.itemAtIndex(index)?.state = NSOffState
+    }
 
 }
 

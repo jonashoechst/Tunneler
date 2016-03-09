@@ -17,19 +17,18 @@ enum SSHConnectionStatus {
     case connected, disconnected, failed
 }
 
-class SSHConnection {
+enum SSHConnectionError: ErrorType{
+    case AlreadyConnected
+}
+
+class SSHConnection: CustomStringConvertible{
     var host: String
-    var socksPort: Int
-    var compression = false
-    var remoteHostsAllowed = false
+    var config = [String: String]()
+    var dynamicForward: String?
     
-    // optionals
-    var user: String?
-    var cipher: String?
-    
-    // statics
+    // task handling
     let outpipe = NSPipe()
-    let task = NSTask()
+    var task: NSTask?
     
     // delegate
     let delegate: SSHConnectionDelegate?
@@ -39,51 +38,44 @@ class SSHConnection {
         didSet {
             if status == SSHConnectionStatus.connected { delegate?.sessionConnected(self) }
             else {
-                let messageData = outpipe.fileHandleForReading.readDataToEndOfFile()
-                let message = String(data: messageData, encoding: NSUTF8StringEncoding)
-                delegate?.sessionDisconnected(self, message: message)
+//                let messageData = outpipe.fileHandleForReading.readDataToEndOfFile()
+//                let message = String(data: messageData, encoding: NSUTF8StringEncoding)
+                delegate?.sessionDisconnected(self, message: "")
             }
         }
     }
     
-    init (theHost: String, theSocksPort: Int, theDelegate: SSHConnectionDelegate?) {
+    init (theHost: String, theDelegate: SSHConnectionDelegate?) {
         self.host = theHost
-        self.socksPort = theSocksPort
         self.delegate = theDelegate
         
-        self.task.standardOutput = outpipe
-        self.task.standardError = outpipe
-        self.task.launchPath = "/usr/bin/env"
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("taskTerminated:"), name: NSTaskDidTerminateNotification, object: self.task)
+    }
+
+    func connect () throws {
+        if status == SSHConnectionStatus.connected { throw SSHConnectionError.AlreadyConnected }
+        
+        self.task = NSTask()
+//        self.task!.standardOutput = outpipe
+//        self.task!.standardError = outpipe
+        self.task!.launchPath = "/usr/bin/env"
+        self.task!.arguments = ["ssh", "-N", host]
+        self.task!.launch()
+        
+        self.status = SSHConnectionStatus.connected
+    }
+    
+    func disconnect () {
+        if let task = self.task { task.terminate() }
     }
     
     dynamic func taskTerminated (notification: NSNotification) {
         self.status = SSHConnectionStatus.disconnected
     }
     
-    func craftCommand () -> [String] {
-        var command = ["ssh", "-N", "-D", String(socksPort)]
-
-        if let cipher = cipher { command += ["-c", cipher] }
-        if compression { command.append("-C") }
-        if remoteHostsAllowed { command.append("-g") }
-        
-        if let user = user { command.append(user+"@"+host) }
-        else { command.append(host) }
-        
-        return command
+    // MARK: CustomStringConvertible Method
+    var description: String {
+        return "ssh \(host): \(config)"
     }
     
-    func connect () {
-        task.arguments = self.craftCommand()
-        print("Connecting with command: "+task.arguments!.joinWithSeparator(" "))
-        task.launch()
-        self.status = SSHConnectionStatus.connected
-    }
-    
-    func disconnect () {
-        task.terminate()
-    }
-
 }

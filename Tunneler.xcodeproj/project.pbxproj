@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471C67721C8F84760020CCA9 /* SSHConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C67711C8F84760020CCA9 /* SSHConnectionManager.swift */; };
 		472EBCD71C8E0B9000E44552 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EBCD61C8E0B9000E44552 /* AppDelegate.swift */; };
 		472EBCD91C8E0B9000E44552 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EBCD81C8E0B9000E44552 /* ViewController.swift */; };
 		472EBCDB1C8E0B9000E44552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472EBCDA1C8E0B9000E44552 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		471C67711C8F84760020CCA9 /* SSHConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHConnectionManager.swift; sourceTree = "<group>"; };
 		472EBCD31C8E0B9000E44552 /* Tunneler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tunneler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		472EBCD61C8E0B9000E44552 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		472EBCD81C8E0B9000E44552 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				472EBCD61C8E0B9000E44552 /* AppDelegate.swift */,
+				471C67711C8F84760020CCA9 /* SSHConnectionManager.swift */,
 				472EBCE51C8E15FC00E44552 /* SSHConnection.swift */,
 				472EBCD81C8E0B9000E44552 /* ViewController.swift */,
 				472EBCDA1C8E0B9000E44552 /* Assets.xcassets */,
@@ -136,6 +139,7 @@
 			files = (
 				472EBCD91C8E0B9000E44552 /* ViewController.swift in Sources */,
 				472EBCE61C8E15FC00E44552 /* SSHConnection.swift in Sources */,
+				471C67721C8F84760020CCA9 /* SSHConnectionManager.swift in Sources */,
 				472EBCD71C8E0B9000E44552 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
