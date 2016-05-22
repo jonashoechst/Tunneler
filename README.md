@@ -9,6 +9,9 @@ Since I was missing a tool that manages my SSH tunnels in a nice and clean way, 
 
 The main idea is to parse existing configs (like ~/.ssh/config) and create a list of possible nodes. These should later be annotated with a config file to keep their local SOCKS port. 
 
+## Ressources
+ - App Icon: [http://www.flaticon.com/free-icon/tunnel-perspective_27438](http://www.flaticon.com/free-icon/tunnel-perspective_27438)
+
 ## Contact
 
 Website: [https://jonashoechst.de](https://jonashoechst.de)
