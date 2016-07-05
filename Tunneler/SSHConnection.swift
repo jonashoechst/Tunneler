@@ -49,7 +49,7 @@ class SSHConnection: CustomStringConvertible{
         self.host = theHost
         self.delegate = theDelegate
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("taskTerminated:"), name: NSTaskDidTerminateNotification, object: self.task)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SSHConnection.taskTerminated(_:)), name: NSTaskDidTerminateNotification, object: self.task)
     }
 
     func connect () throws {
