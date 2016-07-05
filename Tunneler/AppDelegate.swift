@@ -23,15 +23,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, SSHConnectionManagerDelegate
         
         let menu = NSMenu()
         for (index, c) in manager!.connections.enumerate() {
-            let item = NSMenuItem(title: "\(c.host) (\(c.dynamicForward!))", action: Selector("itemClicked:"), keyEquivalent: String(index+1))
+            let item = NSMenuItem(title: "\(c.host) (\(c.dynamicForward!))", action: #selector(AppDelegate.itemClicked(_:)), keyEquivalent: String(index+1))
             item.tag = index
             menu.addItem(item)
         }
         
+//        menu.addItem(NSMenuItem.separatorItem())
+//        menu.addItem(NSMenuItem(title: "Refresh Menu", action: Selector("refresh:"), keyEquivalent: "r"))
         menu.addItem(NSMenuItem.separatorItem())
-        menu.addItem(NSMenuItem(title: "Refresh Menu", action: Selector("refresh:"), keyEquivalent: "r"))
-        menu.addItem(NSMenuItem.separatorItem())
-        menu.addItem(NSMenuItem(title: "Quit", action: Selector("terminate:"), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.sharedApplication().terminate(_:)), keyEquivalent: "q"))
         
         statusItem.menu = menu
     }
