@@ -13,6 +13,7 @@
 		472EBCDB1C8E0B9000E44552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472EBCDA1C8E0B9000E44552 /* Assets.xcassets */; };
 		472EBCDE1C8E0B9000E44552 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 472EBCDC1C8E0B9000E44552 /* Main.storyboard */; };
 		472EBCE61C8E15FC00E44552 /* SSHConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EBCE51C8E15FC00E44552 /* SSHConnection.swift */; };
+		47B4E53C1CF21F9200726B67 /* SSHConfigParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4E53B1CF21F9200726B67 /* SSHConfigParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		472EBCDD1C8E0B9000E44552 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		472EBCDF1C8E0B9000E44552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		472EBCE51C8E15FC00E44552 /* SSHConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHConnection.swift; sourceTree = "<group>"; };
+		47B4E53B1CF21F9200726B67 /* SSHConfigParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHConfigParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				472EBCD61C8E0B9000E44552 /* AppDelegate.swift */,
 				471C67711C8F84760020CCA9 /* SSHConnectionManager.swift */,
 				472EBCE51C8E15FC00E44552 /* SSHConnection.swift */,
+				47B4E53B1CF21F9200726B67 /* SSHConfigParser.swift */,
 				472EBCD81C8E0B9000E44552 /* ViewController.swift */,
 				472EBCDA1C8E0B9000E44552 /* Assets.xcassets */,
 				472EBCDC1C8E0B9000E44552 /* Main.storyboard */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47B4E53C1CF21F9200726B67 /* SSHConfigParser.swift in Sources */,
 				472EBCD91C8E0B9000E44552 /* ViewController.swift in Sources */,
 				472EBCE61C8E15FC00E44552 /* SSHConnection.swift in Sources */,
 				471C67721C8F84760020CCA9 /* SSHConnectionManager.swift in Sources */,
