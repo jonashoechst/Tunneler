@@ -23,39 +23,16 @@ class SSHConnectionManager: SSHConnectionDelegate {
     }
     
     func loadSSHConfig () {
-        let filepath = NSString(string: "~/.ssh/config").stringByExpandingTildeInPath
-        let fileContent = try! String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding)
+        let systemSSHConfigPath = NSString(string: "/etc/ssh/ssh_config").stringByExpandingTildeInPath
+        let userSSHConfigPath = NSString(string: "~/.ssh/config").stringByExpandingTildeInPath
+        let systemSSHConfig = SSHConfig(theConfigPath: systemSSHConfigPath, theParentConfig: nil);
+        let userSSHConfig = SSHConfig(theConfigPath: userSSHConfigPath, theParentConfig: systemSSHConfig);
         
-        var currentHost: SSHConnection?
-        
-        let lines = fileContent.componentsSeparatedByString("\n") //.characters.split{$0 == "\n"}.map(String.init)
-        for line in lines{
-            let array = line.characters.split{$0 == " "}.map(String.init)
-            if array.count == 0 || array[0].characters.first! == "#" {
-                // This is a empty line or a comment
-                continue
-            }
-            
-            if array.first!.lowercaseString == "host" {
-                if let host = currentHost {
-                    if let _ = host.dynamicForward {
-                        connections.append(host)
-                    }
-                }
-                currentHost = SSHConnection(theHost: array[1], theDelegate: self)
-                continue
-            }
-            
-            if array.first!.lowercaseString == "dynamicforward" {
-                currentHost?.dynamicForward = array[1]
-            }
-            
-            currentHost?.config[array.first!] = array[1]
-        }
-        
-        if let host = currentHost {
-            if let _ = host.dynamicForward {
-                connections.append(host)
+        for (host, params) in userSSHConfig.hosts {
+            let connection = SSHConnection(theHost: host, theDelegate: self)
+            if let dynamicforward = params["dynamicforward"] {
+                connection.dynamicForward = dynamicforward
+                connections.append(connection)
             }
         }
     }
